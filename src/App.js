@@ -3,7 +3,6 @@ import './App.css';
 import $ from 'jquery'
 
 // My object
-import MovieRow from './movieRow.js'
 import MovieLoader from './movieLoader.js'
 
 class App extends Component {
@@ -16,6 +15,50 @@ class App extends Component {
 
     console.log("This is my init.")
 
+    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=Avengers"
+  
+    // AJAX call
+    $.ajax({
+      url: urlString,
+      success: (searchResults) => {
+        console.log("Fetched data successfully!")
+        //console.log(searchResults)
+        const results = searchResults.results
+        //console.log(results[0])
+
+        // List of movies
+        var movieRows = []
+
+        // Grab the first 4 of a result .. ?
+        for (var i = 0; i < 4; i++) { 
+
+          results[i].poster_src = "https://image.tmdb.org/t/p/w500" + results[i].poster_path 
+          const movieRow = <MovieLoader key={results[i].id} movie={results[i]} />
+
+          movieRows.push(movieRow)
+        }
+
+        // Given the list of results of 'movie'
+        // results.forEach((movie) => {
+
+        //   // Create movie object and give it it's poster image
+        //   movie.poster_src = "https://image.tmdb.org/t/p/w500" + movie.poster_path
+        //   // console.log(movie.title)
+
+        //   // Set movie object
+        //   const movieRow = <MovieLoader key={movie.id} movie={movie}/>
+
+        //   // Push to list of movies
+        //   movieRows.push(movieRow)
+        // })
+
+        // Set the state to the list, update view
+        this.setState({rows: movieRows})
+      },
+      error: (xhr, status, err) => {
+        console.error("Failed to fetch data")
+      }
+    })
     // const movies = [
     //   {id: 0, poster_src: "https://image.tmdb.org/t/p/w185/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", title: "Avengers: Infinity War", overview: "Some description for the movies 1."},
     //   {id: 1, poster_src: "https://image.tmdb.org/t/p/w185/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", title: "The Avengers", overview: "Some description for the movies number 2."}
@@ -35,10 +78,61 @@ class App extends Component {
     // this.performSearch("ant man")
   }
 
+  // TEST THINGS
+  // testFunction() {
+  //   console.log("Boop!")
+  //   const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=Avengers"
+  
+  //   // AJAX call
+  //   $.ajax({
+  //     url: urlString,
+  //     success: (searchResults) => {
+  //       console.log("Fetched data successfully!")
+  //       //console.log(searchResults)
+  //       const results = searchResults.results
+  //       //console.log(results[0])
+
+  //       // List of movies
+  //       var movieRows = []
+
+  //       for (var i = 0; i < 4; i++) { 
+
+  //         const movieRow = <MovieLoader key={results[i].id} movie={results[i]} />
+
+  //         movieRows.push(movieRow)
+  //       }
+
+  //       // Given the list of results of 'movie'
+  //       // results.forEach((movie) => {
+
+  //       //   // Create movie object and give it it's poster image
+  //       //   movie.poster_src = "https://image.tmdb.org/t/p/w500" + movie.poster_path
+  //       //   // console.log(movie.title)
+
+  //       //   // Set movie object
+  //       //   const movieRow = <MovieLoader key={movie.id} movie={movie}/>
+
+  //       //   // Push to list of movies
+  //       //   movieRows.push(movieRow)
+  //       // })
+
+  //       // Set the state to the list, update view
+  //       this.setState({rows: movieRows})
+  //     },
+  //     error: (xhr, status, err) => {
+  //       console.error("Failed to fetch data")
+  //     }
+  //   })
+  // }
+
   // Function to perform search
   performSearch(searchTerm) {
     console.log("Persom search with movieDB.")
+
+    // Given the search term, call the API to return a list of movies with the given term
     const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=" + searchTerm
+    
+    // AJAX call
     $.ajax({
       url: urlString,
       success: (searchResults) => {
@@ -47,15 +141,26 @@ class App extends Component {
         const results = searchResults.results
         //console.log(results[0])
 
+        // List of movies
         var movieRows = []
 
+        console.log(results)
+
+        // Given the list of results of 'movie'
         results.forEach((movie) => {
+
+          // Create movie object and give it it's poster image
           movie.poster_src = "https://image.tmdb.org/t/p/w500" + movie.poster_path
           // console.log(movie.title)
+
+          // Set movie object
           const movieRow = <MovieLoader key={movie.id} movie={movie}/>
+
+          // Push to list of movies
           movieRows.push(movieRow)
         })
 
+        // Set the state to the list, update view
         this.setState({rows: movieRows})
       },
       error: (xhr, status, err) => {
@@ -64,9 +169,14 @@ class App extends Component {
     })
   }
 
+  // When search bar input changes per char, run this
   searchChangeHandler(event) {
+
+    // Grab the current text inside search bar
     const searchTerm = event.target.value
     const boundObject = this
+
+    // Perform a search on the input
     boundObject.performSearch(searchTerm)
   }
 
@@ -88,20 +198,6 @@ class App extends Component {
           </div>
         </nav>
 
-        {/* <table className="titleBar">
-          <tbody>
-            <tr>
-              <td>
-                <img alt="App Icon" width="50" src="logo.png" />
-              </td>
-              <td width="8"></td>
-              <td>
-                <h2>MoviesDB Search</h2>
-              </td>
-            </tr>
-          </tbody>
-        </table> */}
-
         <input style={{
           fontSize: 24,
           display: "block",
@@ -109,7 +205,14 @@ class App extends Component {
           paddingTop: 8,
           paddingBottom: 8
         }} onChange={this.searchChangeHandler.bind(this)} placeholder="Search Movie.." />
-        <div class="container"><div class="wrapper"><div class="row">{this.state.rows}</div></div></div>
+        <div class="container">
+          <div class="wrapper">
+            <div class="row">
+              {/*this.testFunction()*/}
+              {this.state.rows}
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Body.css'
-import MovieLoader from '../../movieLoader';
+
+import MovieLister from './MovieLister'
+
 
 class Body extends Component {
     render() {
@@ -15,15 +17,7 @@ class Body extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="main-section">
-                    <div className="wrapper">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <input style={{fontSize: 24}} placeholder="Search Movie.." />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <MovieLister></MovieLister>
            </React.Fragment>
        )
     }

@@ -13,6 +13,7 @@ class MovieLoader extends React.Component {
     render() {
       return <div key={this.props.movie.id} className="col-md-3">
         <img alt="Poster" width="200" height="auto" src = {this.props.movie.poster_src}/>
+        <h3>{this.props.movie.title}</h3>
       </div>
       //   return <table key={this.props.movie.id}>
       //   <tbody>
