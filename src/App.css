@@ -6,6 +6,53 @@
   color: #FFF;
   padding-left: 16px;
 }
+
+/* Main section */
+.main-section {
+  width: 100%;
+  height: 100%;
+  display: table;
+  text-align: center;
+  background: url("https://i.ytimg.com/vi/8Wvf4ZNdvPE/maxresdefault.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.masthead {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: url("https://i.ytimg.com/vi/8Wvf4ZNdvPE/maxresdefault.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+
+/* Content wrapper */
+.wrapper {
+  height: 100%;
+  padding: 50px;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+/* Sub section */
+.sub-section {
+  width: 100%;
+  padding: 50px 0;
+  display: table;
+  text-align: center;
+  background-color: #19181D;
+}
+
+/* PRESET INFORMATION GIVEN TO US BY THE APP */
 .App {
   text-align: center;
 }
@@ -37,4 +84,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+#mainNav {
+  min-height: 56px;
+}
+#mainNav .navbar-toggler {
+  font-size: 80%;
+  padding: 0.75rem;
+  color: white;
+  border: 1px solid white;
+}
+
+#mainNav .navbar-brand {
+  color: white;
+  font-weight: 700;
+  padding: 0.9rem 0;
 }

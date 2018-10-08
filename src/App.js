@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.css';
 
 // My object
 import MovieLoader from './movieLoader.js'
@@ -15,7 +16,7 @@ class App extends Component {
 
     console.log("This is my init.")
 
-    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=Avengers"
+    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=a"
   
     // AJAX call
     $.ajax({
@@ -30,7 +31,7 @@ class App extends Component {
         var movieRows = []
 
         // Grab the first 4 of a result .. ?
-        for (var i = 0; i < 4; i++) { 
+        for (var i = 0; i < 12; i++) { 
 
           results[i].poster_src = "https://image.tmdb.org/t/p/w500" + results[i].poster_path 
           const movieRow = <MovieLoader key={results[i].id} movie={results[i]} />
@@ -77,53 +78,6 @@ class App extends Component {
 
     // this.performSearch("ant man")
   }
-
-  // TEST THINGS
-  // testFunction() {
-  //   console.log("Boop!")
-  //   const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=Avengers"
-  
-  //   // AJAX call
-  //   $.ajax({
-  //     url: urlString,
-  //     success: (searchResults) => {
-  //       console.log("Fetched data successfully!")
-  //       //console.log(searchResults)
-  //       const results = searchResults.results
-  //       //console.log(results[0])
-
-  //       // List of movies
-  //       var movieRows = []
-
-  //       for (var i = 0; i < 4; i++) { 
-
-  //         const movieRow = <MovieLoader key={results[i].id} movie={results[i]} />
-
-  //         movieRows.push(movieRow)
-  //       }
-
-  //       // Given the list of results of 'movie'
-  //       // results.forEach((movie) => {
-
-  //       //   // Create movie object and give it it's poster image
-  //       //   movie.poster_src = "https://image.tmdb.org/t/p/w500" + movie.poster_path
-  //       //   // console.log(movie.title)
-
-  //       //   // Set movie object
-  //       //   const movieRow = <MovieLoader key={movie.id} movie={movie}/>
-
-  //       //   // Push to list of movies
-  //       //   movieRows.push(movieRow)
-  //       // })
-
-  //       // Set the state to the list, update view
-  //       this.setState({rows: movieRows})
-  //     },
-  //     error: (xhr, status, err) => {
-  //       console.error("Failed to fetch data")
-  //     }
-  //   })
-  // }
 
   // Function to perform search
   performSearch(searchTerm) {
@@ -183,31 +137,56 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <a className="navbar-brand" href="#">Navbar</a>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
            </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto"></ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto"></ul>
+            <form className="form-inline my-2 my-lg-0">
+              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
-        </nav>
+        </nav> */}
 
-        <input style={{
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a class="navbar-brand">SCREENIT</a>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" style={{color: 'white'}}>About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" style={{color: 'white'}}>Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" style={{color: 'white'}}>Contact</a>
+                </li>
+              </ul>
+      </nav>
+
+        <header class="masthead">
+          <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center">
+              <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
+              <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+              <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+            </div>
+          </div>
+        </header>
+
+        {/* <input style={{
           fontSize: 24,
           display: "block",
           width: "99%",
           paddingTop: 8,
           paddingBottom: 8
-        }} onChange={this.searchChangeHandler.bind(this)} placeholder="Search Movie.." />
-        <div class="container">
-          <div class="wrapper">
-            <div class="row">
+        }} onChange={this.searchChangeHandler.bind(this)} placeholder="Search Movie.." />*/}
+        <div className="sub-section">
+          <div className="wrapper">
+            <div className="row">
               {/*this.testFunction()*/}
               {this.state.rows}
             </div>
