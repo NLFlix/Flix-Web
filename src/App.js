@@ -16,7 +16,7 @@ class App extends Component {
 
     console.log("This is my init.")
 
-    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=a"
+    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=Star"
   
     // AJAX call
     $.ajax({
@@ -31,7 +31,7 @@ class App extends Component {
         var movieRows = []
 
         // Grab the first 4 of a result .. ?
-        for (var i = 0; i < 12; i++) { 
+        for (var i = 0; i < 6; i++) { 
 
           results[i].poster_src = "https://image.tmdb.org/t/p/w500" + results[i].poster_path 
           const movieRow = <MovieLoader key={results[i].id} movie={results[i]} />
@@ -169,10 +169,11 @@ class App extends Component {
 
         <header class="masthead">
           <div class="container d-flex h-100 align-items-center">
-            <div class="mx-auto text-center">
-              <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-              <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-              <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="What are you in the mood to watch?" />
+              <div class="input-group-append">
+                <button class="btn btn-success" type="submit">Go</button> 
+              </div>
             </div>
           </div>
         </header>
@@ -187,6 +188,9 @@ class App extends Component {
         <div className="sub-section">
           <div className="wrapper">
             <div className="row">
+              <div class="col-md-12 text-left">
+                <h4 style={{color:"white", paddingBottom: 10}}>FILM REEL</h4>
+              </div>
               {/*this.testFunction()*/}
               {this.state.rows}
             </div>
