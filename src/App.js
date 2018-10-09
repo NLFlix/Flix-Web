@@ -16,7 +16,7 @@ class App extends Component {
 
     console.log("This is my init.")
 
-    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=Star"
+    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US&query=a"
   
     // AJAX call
     $.ajax({
@@ -156,13 +156,13 @@ class App extends Component {
             <a class="navbar-brand">SCREENIT</a>
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" style={{color: 'white'}}>About</a>
+                  <a class="nav-link js-scroll-trigger" href="#" style={{color: 'white'}}>About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" style={{color: 'white'}}>Projects</a>
+                  <a class="nav-link js-scroll-trigger"  href="#" style={{color: 'white'}}>Projects</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" style={{color: 'white'}}>Contact</a>
+                  <a class="nav-link js-scroll-trigger" href="#" style={{color: 'white'}}>Contact</a>
                 </li>
               </ul>
       </nav>
