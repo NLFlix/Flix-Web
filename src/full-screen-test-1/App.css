@@ -1,0 +1,97 @@
+  
+  
+  html, body {
+    height: 100%;
+  }
+
+  #root {
+      height: 100% !important;
+      width: 100% !important;
+  }
+  
+  .masthead {
+    width: 100%;
+    height: 100% !important;
+    display: table;
+    text-align: center;
+    background: url("https://image.tmdb.org/t/p/original/oMKFQmoVgB69fyXfSMu0lGlHJP2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+
+  /* Content wrapper */
+  .wrapper {
+    height: 100%;
+    padding: 50px;
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
+  }
+  
+  .carousel-item {
+    height: 100vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  /* PRESET INFORMATION GIVEN TO US BY THE APP */
+  .App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  #mainNav {
+    min-height: 56px;
+  }
+  #mainNav .navbar-toggler {
+    font-size: 80%;
+    padding: 0.75rem;
+    color: white;
+    border: 1px solid white;
+  }
+  
+  #mainNav .navbar-brand {
+    color: white;
+    font-weight: 700;
+    padding: 0.9rem 0;
+  }

@@ -4,7 +4,7 @@ import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.css';
 
 // My object
-import MovieLoader from './movieLoader.js'
+import MovieLoader from '../movieLoader.js'
 
 class App extends Component {
   
@@ -152,31 +152,67 @@ class App extends Component {
           </div>
         </nav> */}
 
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <a class="navbar-brand">NLIMDb</a>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#" style={{color: 'white'}}>About</a>
+        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a className="navbar-brand">SCREENIT</a>
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <a className="nav-link js-scroll-trigger" href="#" style={{color: 'white'}}>About</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger"  href="#" style={{color: 'white'}}>Projects</a>
+                <li className="nav-item">
+                  <a className="nav-link js-scroll-trigger"  href="#" style={{color: 'white'}}>Projects</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#" style={{color: 'white'}}>Contact</a>
+                <li className="nav-item">
+                  <a className="nav-link js-scroll-trigger" href="#" style={{color: 'white'}}>Contact</a>
                 </li>
               </ul>
-      </nav>
+        </nav> */}
 
-        <header class="masthead">
-          <div class="container d-flex h-100 align-items-center">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="What are you in the mood to watch?" />
-              <div class="input-group-append">
-                <button class="btn btn-success" type="submit">Go</button> 
-              </div>
+        {/* <div className="masthead">
+            <div className="wrapper">
+                <div className="container d-flex h-100 align-items-center">
+                    <div className="input-group">
+                    <input type="text" className="form-control" placeholder="What are you in the mood to watch?" />
+                    <div className="input-group-append">
+                        <button className="btn btn-success" type="submit">Go</button> 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div> */}
+
+    <header>
+      <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+      
+        <ol className="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div className="carousel-inner" role="listbox">
+
+          <div className="carousel-item active" style={{backgroundImage: "url(https://image.tmdb.org/t/p/original/oMKFQmoVgB69fyXfSMu0lGlHJP2.jpg)"}}>
+            <div className="carousel-caption d-none d-md-block">
+              <h3>First Slide</h3>
+              <p>This is a description for the first slide.</p>
             </div>
           </div>
-        </header>
+
+          <div className="carousel-item" style={{backgroundImage: "url(https://image.tmdb.org/t/p/original/7diKA3XyLUB9pV6oI9FznQ5lv66.jpg)"}}>
+            <div className="carousel-caption d-none d-md-block">
+              <h3>Second Slide</h3>
+              <p>This is a description for the second slide.</p>
+            </div>
+          </div>
+
+          <div className="carousel-item" style={{backgroundImage: "url(https://image.tmdb.org/t/p/original/3P52oz9HPQWxcwHOwxtyrVV1LKi.jpg)"}}>
+            <div className="carousel-caption d-none d-md-block">
+              <h3>Third Slide</h3>
+              <p>This is a description for the third slide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
         {/* <input style={{
           fontSize: 24,
@@ -185,17 +221,17 @@ class App extends Component {
           paddingTop: 8,
           paddingBottom: 8
         }} onChange={this.searchChangeHandler.bind(this)} placeholder="Search Movie.." />*/}
-        <div className="sub-section">
+        {/* <div className="sub-section">
           <div className="wrapper">
             <div className="row">
-              <div class="col-md-12 text-left">
+              <div className="col-md-12 text-left">
                 <h4 style={{color:"white", paddingBottom: 10}}>FILM REEL</h4>
               </div>
-              {/*this.testFunction()*/}
-              {this.state.rows}
+              this.testFunction()
+              this.state.rows
             </div>
           </div>
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }
