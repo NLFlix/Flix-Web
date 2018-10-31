@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'moviedb/build')));
 
 let db = new sqlite3.Database('./db/NLIM.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
@@ -25,10 +25,10 @@ app.get('/api/getAllMovies', (req,res) => {
           console.error(err.message);
         }
         rows.forEach((row) => {
-          list.push(row.id + " " + row.title);
+            movieInfo = JSON.stringify(row);
+            list.push(movieInfo);
         });
         res.json(list);
-        console.log(res);
     });
 });
 

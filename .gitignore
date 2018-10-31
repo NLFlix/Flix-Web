@@ -2,13 +2,13 @@
 
 # dependencies
 /node_modules
-/client/node_modules
+/moviedb/node_modules
 
 # testing
-/coverage
+/moviedb/coverage
 
 # production
-/build
+/moviedb/build
 
 # misc
 .DS_Store
