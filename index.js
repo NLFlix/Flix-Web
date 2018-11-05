@@ -45,12 +45,10 @@ app.get('/api/search', (req,res) =>{
 
 app.get('/api/:movieID/movie', (req, res) => {
     var params = req.params;
-    console.log(params.movieID);
     db.get(`SELECT * from Movies m where m.id = ?`, [params.movieID], (err,rows) => {
         if (err) {
             console.error(err.message);
         }
-        console.log(rows)
         res.json(JSON.stringify(rows));
     });
 });
