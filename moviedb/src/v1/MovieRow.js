@@ -1,11 +1,24 @@
 import React from 'react'
+import $ from 'jquery'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class MovieRow extends React.Component {
   viewMovie() {
     // console.log("Trying to view movie")
     // console.log(this.props.movie.title)
-    const url = "https://www.themoviedb.org/movie/" + this.props.movie.id
-    window.location.href = url
+    //const url = "https://www.themoviedb.org/movie/" + this.props.movie.id
+    const url = "/api/" + this.props.movie.id + "/movie"
+    $.ajax({
+      url: url,
+      success: (results) => {
+        console.log("Fetched data successfully")
+        // console.log(searchResults)
+        // console.log(results[0])
+      },
+      error: (xhr, status, err) => {
+        console.error("Failed to fetch data")
+      }
+    })
   }
 
   render() {

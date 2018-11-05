@@ -91,10 +91,13 @@ class App extends Component {
   performSearch(searchTerm) {
     console.log("Perform search using moviedb")
     //const urlString = "https://api.themoviedb.org/3/search/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=" + searchTerm
-    const urlString = "/api/getAllMovies"
+    const urlString = "/api/search"
 
     $.ajax({
       url: urlString,
+      data: {
+        search: searchTerm
+      },
       success: (results) => {
         console.log("Fetched data successfully")
         // console.log(searchResults)
@@ -102,7 +105,8 @@ class App extends Component {
 
         var movieRows = []
 
-        results.forEach((movie) => {
+        results.forEach((result) => {
+          var movie = JSON.parse(result)
           movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
           // console.log(movie.poster_path)
           const movieRow = <MovieRow key={movie.id} movie={movie}/>

@@ -13,10 +13,6 @@ let db = new sqlite3.Database('./db/NLIM.db', sqlite3.OPEN_READWRITE, (err) => {
     console.log('Connected to Movie Database')
 });
 
-function getMovies(){
-    var list = []
-    
-}
 
 app.get('/api/getAllMovies', (req,res) => {
     var list= []
@@ -29,6 +25,32 @@ app.get('/api/getAllMovies', (req,res) => {
             list.push(movieInfo);
         });
         res.json(list);
+    });
+});
+
+app.get('/api/search', (req,res) =>{
+    var search = req.query;
+    var list= []
+    db.all(`SELECT * from Movies m where m.title like ?`, ["%"+search.search+"%"], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+        }
+        rows.forEach((row) => {
+            movieInfo = JSON.stringify(row);
+            list.push(movieInfo);
+        });
+        res.json(list);
+    });
+});
+
+app.get('/api/:movieID/movie', (req, res) => {
+    var params = req.params;
+    console.log(params);
+    db.get(`SELECT * from Movies m where m.title = ?`, [params.movieID], (err,rows) => {
+        if (err) {
+            console.error(err.message);
+        }
+        res.json(rows)
     });
 });
 
