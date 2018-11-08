@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 
 class MovieRow extends React.Component {
   render() {
-    return <table key={this.props.movie.id}>
+    return (
+      <div class="col-md-4">
+        <Link to={'./' + this.props.movie.id + '/movie'}>
+          <img style={{paddingTop: "15px"}} alt="Poster" width="180" src = {this.props.movie.poster_src}/>
+        </Link>
+      </div>
+    )/*<table key={this.props.movie.id}>
     <tbody>
       <tr>
         <td>
@@ -21,7 +27,7 @@ class MovieRow extends React.Component {
         </td>
       </tr>
     </tbody>
-  </table>
+  </table>*/
   }
 }
 

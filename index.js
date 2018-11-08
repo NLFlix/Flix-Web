@@ -49,6 +49,7 @@ app.get('/api/:movieID/movie', (req, res) => {
         if (err) {
             console.error(err.message);
         }
+        console.log(rows);
         res.json(JSON.stringify(rows));
     });
 });

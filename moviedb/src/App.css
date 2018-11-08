@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 /* Title bar attributes */
 .titleBar {
@@ -20,25 +24,21 @@
   background-size: cover;
 }
 
+/* Movie Masthead */
 .masthead {
-  position: relative;
   width: 100%;
   height: auto;
-  min-height: 35rem;
+  min-height: 30rem;
   padding: 15rem 0;
-  background: url("https://image.tmdb.org/t/p/original/fgsHxz21B27hOOqQBiw9L6yWcM7.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
-
 
 /* Content wrapper */
 .wrapper {
   height: 100%;
-  padding: 50px;
-  vertical-align: middle;
+  padding: 100px;
   text-align: center;
   display: table-cell;
 }
@@ -46,10 +46,47 @@
 /* Sub section */
 .sub-section {
   width: 100%;
-  padding: 50px 0;
+  height: 100%;
   display: table;
   text-align: center;
+  vertical-align: middle !important;
   background-color: #19181D;
+}
+
+/* MOVIE POSTER SIZING */
+.movie-poster {
+  height: 300px;
+  width: auto;
+}
+
+/* SELECTED MOVIE ATTRIBUTES */
+.movie-info-style {
+  color: white;
+  font-weight: 900;
+}
+
+/* FONT SIZE */
+.select-movie-title {
+  font-size: 80px;
+}
+
+/* FONT SIZE */
+.select-movie-info {
+  font-size: 22px;
+}
+
+/* FONT SIZE */
+.select-movie-info-sml {
+  font-size: 14px;
+}
+
+.select-movie-info-thin {
+  font-weight: 300;
+}
+
+/* TEXT SLIGHTLY TO THE LEFT */
+.text-left {
+  padding-left: 10%;
 }
 
 /* PRESET INFORMATION GIVEN TO US BY THE APP */

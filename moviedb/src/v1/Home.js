@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MovieRow from './MovieRow.js';
 import $ from 'jquery';
 import '../App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Home extends Component {
     constructor(props) {
@@ -77,8 +78,12 @@ class Home extends Component {
                     paddingLeft: 16
                 }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" />
 
-                {this.state.rows}
-
+                <div className="wrapper">
+                    <div className="row">
+                        {this.state.rows}
+                    </div>
+                </div>
+                {/* {this.state.rows} */}
             </div>
         );
     }
