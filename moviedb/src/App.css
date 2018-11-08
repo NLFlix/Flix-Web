@@ -59,6 +59,21 @@
   width: auto;
 }
 
+.modal-body {
+  padding: 0 !important;
+}
+
+.card {
+  height: auto;
+  padding: 0;
+}
+
+.card-img-top {
+  width: 138px;
+  height: 175px;
+  object-fit: contain;
+}
+
 /* SELECTED MOVIE ATTRIBUTES */
 .movie-info-style {
   color: white;

@@ -41,7 +41,7 @@ class Movie extends Component {
                             <p className="movie-info-style select-movie-info-sml">{movie.release_date} &nbsp;&nbsp;&nbsp;&nbsp; {movie.vote_average} <i className="fas fa-star "></i></p>
                             <p className="movie-info-style select-movie-title">{movie.title}</p>
                             <p className="movie-info-style select-movie-info">{movie.runtime}min</p>
-                            <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal">Watch Trailer</button>
+                            <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal"><font class="movie-info-style">TRAILER</font> &nbsp;&nbsp;&nbsp;<i class="fas fa-play"></i></button>
                     </div>
 
                     <div className="sub-section">
@@ -54,6 +54,28 @@ class Movie extends Component {
                                 <div className="col-md-9">
                                     <p className="movie-info-style select-movie-info-thin" style={{paddingRight: "10%"}}>{movie.overview}</p>
                                 </div>
+
+                                <div className="col-md-3 text-center">
+                                    <div className="card" style={{width: "18rem;"}}>
+                                        <img className="card-img-top" src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg" alt="Card image cap"/>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Ryan Reynolds</h5>
+                                            <p className="card-text">Deadpool</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg"></img>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg"></img>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg"></img>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -61,23 +83,11 @@ class Movie extends Component {
                     <div className="modal" id="myModal">
                         <div className="modal-dialog">
                             <div className="modal-content">
-
-
-                            <div className="modal-header">
-                                <h4 className="modal-title">Modal Heading</h4>
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-
-                            <div className="modal-body">
-                                Modal body..
-                            </div>
-
-
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-
+                                <div className="modal-body">
+                                    <div className="embed-responsive embed-responsive-16by9">
+                                        <iframe width="854" height="480" className="embed-responsive-item" src="https://www.youtube.com/embed/nwyjxsOYnys" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
