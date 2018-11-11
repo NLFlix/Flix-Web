@@ -6,7 +6,7 @@ class MovieRow extends React.Component {
   render() {
     return (
       <div class="col-md-4">
-        <Link to={'./' + this.props.movie.id + '/movie'}>
+        <Link to={'./movie/' + this.props.movie.id }>
           <img style={{paddingTop: "15px"}} alt="Poster" width="180" src = {this.props.movie.poster_src}/>
         </Link>
       </div>

@@ -3,53 +3,29 @@ import MovieRow from './MovieRow.js';
 import $ from 'jquery';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { withRouter } from 'react-router' 
 
 class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: []
+            data: ''
         }
     }
 
     performSearch(searchTerm) {
-        console.log("Perform search using moviedb")
-        const urlString = "/api/search"
-
-        $.ajax({
-            url: urlString,
-            data: {
-                search: searchTerm
-            },
-            success: (results) => {
-                console.log("Fetched data successfully")
-                // console.log(searchResults)
-                // console.log(results[0])
-
-                var movieRows = []
-
-                results.forEach((result) => {
-                    var movie = JSON.parse(result)
-                    movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-                    // console.log(movie.poster_path)
-                    const movieRow = <MovieRow key={movie.id} movie={movie} />
-                    movieRows.push(movieRow)
-                })
-
-                this.setState({ rows: movieRows })
-            },
-            error: (xhr, status, err) => {
-                console.error("Failed to fetch data")
+        console.log(searchTerm)
+        this.props.history.push({
+            pathname: '/results',
+            state:{
+                data: searchTerm
             }
         })
-
     }
 
-
-    searchChangeHandler(event) {
-        console.log(event.target.value)
+    searchHandler(){
         const boundObject = this
-        const searchTerm = event.target.value
+        const searchTerm = document.getElementById('search-text').value
         boundObject.performSearch(searchTerm)
     }
     render() {
@@ -69,23 +45,26 @@ class Home extends Component {
                     </tbody>
                 </table>
 
-                <input style={{
+                <input id="search-text" style={{
                     fontSize: 24,
                     display: 'block',
                     width: "99%",
                     paddingTop: 8,
                     paddingBottom: 8,
                     paddingLeft: 16
-                }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" />
+                }}  placeholder="Enter search term" />
+
+                <button onClick = {this.searchHandler.bind(this)}>
+                    Search
+                </button>
 
                 <div className="wrapper">
                     <div className="row">
                         {this.state.rows}
                     </div>
                 </div>
-                {/* {this.state.rows} */}
             </div>
         );
     }
 }
-export default Home    
+export default withRouter(Home)    
