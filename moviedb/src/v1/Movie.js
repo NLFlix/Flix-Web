@@ -11,14 +11,12 @@ class Movie extends Component {
         $.ajax({
             url: "/api/" + this.props.match.params.id + "/movie",
             success: (result) => {
+                this.setState({ movie: result })
                 console.log("Fetched data successfully")
             },
             error: (xhr, status, err) => {
                 console.error("Failed to fetch data")
             }
-        }).done((result) => {
-            this.setState({ movie: result })
-            console.log("component mount")
         });
     }
 

@@ -14,17 +14,13 @@ let db = new sqlite3.Database('./db/NLIM.db', sqlite3.OPEN_READWRITE, (err) => {
 });
 
 
-app.get('/api/getAllMovies', (req,res) => {
-    var list= []
-    db.all(`SELECT * From Movies`, (err, rows) => {
+app.get('/api/getMovieBackdrop', (req,res) => {
+    db.get(`SELECT backdrop_path From Movies ORDER BY RANDOM() LIMIT 1`, (err, rows) => {
         if (err) {
-          console.error(err.message);
+            console.error(err.message);
         }
-        rows.forEach((row) => {
-            movieInfo = JSON.stringify(row);
-            list.push(movieInfo);
-        });
-        res.json(list);
+        
+        res.json(JSON.stringify(rows));
     });
 });
 

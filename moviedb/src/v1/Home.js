@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { withRouter } from 'react-router' 
+import { withRouter } from 'react-router'; 
+import $ from 'jquery';
 
 class Home extends Component {
     constructor(props) {
@@ -9,8 +10,27 @@ class Home extends Component {
         this.state = {
             data: ''
         }
+        this.getBackDrop();
     }
     
+    getBackDrop(){
+        $.ajax({
+            url: "/api/getMovieBackdrop",
+            success: (result) => {
+                var backdrop = JSON.parse(result).backdrop_path
+                if(!backdrop){
+                    console.log('No backdrop, retrying');
+                    this.getBackDrop();
+                } else {
+                    console.log(backdrop);
+                }
+            },
+            error: (xhr, status, err) => {
+                console.error("Failed to fetch data")
+            }
+        });
+    }
+
     performSearch(searchTerm) {
         console.log(searchTerm)
         this.props.history.push({
