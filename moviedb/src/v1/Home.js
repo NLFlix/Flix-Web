@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import MovieRow from './MovieRow.js';
-import $ from 'jquery';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { withRouter } from 'react-router' 
@@ -12,7 +10,7 @@ class Home extends Component {
             data: ''
         }
     }
-
+    
     performSearch(searchTerm) {
         console.log(searchTerm)
         this.props.history.push({
@@ -30,22 +28,23 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
-                <table className="titleBar">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <img alt="app icon" width="50" src="green_app_icon.svg" />
-                            </td>
-                            <td width="8" />
-                            <td>
-                                <h1>MoviesDB Search</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <input id="search-text" style={{
+            <React.Fragment>
+                <div className="main-section">
+                    <div className="wrapper">
+                        <div className="row">
+                            <div class="col-md-3"></div>
+                            <div className="col-md-6">
+                                <div className="input-group">
+                                    <input id="search-text" type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                    <div className="input-group-append">
+                                        <button onClick = {this.searchHandler.bind(this)} className="btn btn-success" type="button">Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* <input id="search-text" style={{
                     fontSize: 24,
                     display: 'block',
                     width: "99%",
@@ -62,8 +61,8 @@ class Home extends Component {
                     <div className="row">
                         {this.state.rows}
                     </div>
-                </div>
-            </div>
+                </div> */}
+                </React.Fragment>
         );
     }
 }

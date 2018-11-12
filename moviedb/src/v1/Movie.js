@@ -4,7 +4,6 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
 
-
 class Movie extends Component {
     constructor(props) {
         super(props)
