@@ -17,11 +17,13 @@
   height: 100vh;
   display: table;
   text-align: center;
-  background: url("https://i.ytimg.com/vi/8Wvf4ZNdvPE/maxresdefault.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  /* background: url("https://i.ytimg.com/vi/8Wvf4ZNdvPE/maxresdefault.jpg") no-repeat center center fixed;  */
+  -webkit-background-size: cover !important;;
+  -moz-background-size: cover !important;;
+  -o-background-size: cover !important;;
+  background-size: cover !important;;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 
@@ -140,4 +142,31 @@
   color: white;
   font-weight: 700;
   padding: 0.9rem 0;
+}
+
+/* TEXT INPUTS */
+.form-control {
+  background-color: transparent !important;
+  border-top: none !important;
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  
+  padding: 20px !important;
+
+  margin-right: 25px;
+
+  color: white !important;
+  font-size: 15px !important;
+  letter-spacing: 2px;
+}
+
+.form-control::placeholder {
+  color: white !important;
+}
+
+.btn-success {
+  background-color: #FE0F1B !important;
+  border-color: #FE0F1B !important;
+  border-radius: 100% !important;
 }

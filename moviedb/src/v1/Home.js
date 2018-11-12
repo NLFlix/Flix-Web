@@ -8,11 +8,13 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: ''
+            backdrop: ''
         }
+        
         this.getBackDrop();
+        
     }
-    
+        
     getBackDrop(){
         $.ajax({
             url: "/api/getMovieBackdrop",
@@ -23,6 +25,7 @@ class Home extends Component {
                     this.getBackDrop();
                 } else {
                     console.log(backdrop);
+                    this.setState({backdrop: backdrop});
                 }
             },
             error: (xhr, status, err) => {
@@ -47,43 +50,29 @@ class Home extends Component {
         boundObject.performSearch(searchTerm)
     }
     render() {
-        return (
-            <React.Fragment>
-                <div className="main-section">
-                    <div className="wrapper">
-                        <div className="row">
-                            <div class="col-md-3"></div>
-                            <div className="col-md-6">
-                                <div className="input-group">
-                                    <input id="search-text" type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                                    <div className="input-group-append">
-                                        <button onClick = {this.searchHandler.bind(this)} className="btn btn-success" type="button">Button</button>
+        console.log('Render');
+        if(this.state.backdrop != undefined) {
+            console.log(this.state.backdrop);
+            return (
+                <React.Fragment>
+                    <div className="main-section" style={{background:"linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(https://image.tmdb.org/t/p/original/"+ this.state.backdrop + ")"}}>>
+                        <div className="wrapper">
+                            <div className="row">
+                                <div class="col-md-3"></div>
+                                <div className="col-md-6">
+                                    <div className="input-group">
+                                        <input id="search-text" type="text" className="form-control" placeholder="What are you in the mood to watch?" aria-label="What are you in the mood to watch?" aria-describedby="wayitmtw?" />
+                                        <div className="input-group-append">
+                                            <button onClick = {this.searchHandler.bind(this)} className="btn btn-success" type="button"><i class="fas fa-search"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {/* <input id="search-text" style={{
-                    fontSize: 24,
-                    display: 'block',
-                    width: "99%",
-                    paddingTop: 8,
-                    paddingBottom: 8,
-                    paddingLeft: 16
-                }}  placeholder="Enter search term" />
-
-                <button onClick = {this.searchHandler.bind(this)}>
-                    Search
-                </button>
-
-                <div className="wrapper">
-                    <div className="row">
-                        {this.state.rows}
-                    </div>
-                </div> */}
                 </React.Fragment>
-        );
+            );
+        } else { return <p></p> }
     }
 }
 export default withRouter(Home)    
