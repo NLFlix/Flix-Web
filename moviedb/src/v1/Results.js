@@ -24,8 +24,6 @@ class Results extends Component {
             },
             success: (results) => {
                 console.log("Fetched data successfully")
-                // console.log(searchResults)
-                // console.log(results[0])
 
                 var movieRows = []
 
@@ -56,74 +54,39 @@ class Results extends Component {
     render() {
         return (
             <React.Fragment>
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="#">NLIMDb</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                        <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Brand</a>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                            </li>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
                         </ul>
-                        <form class="navbar-form navbar-left">
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search" />
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                        <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                            </li>
-                        </ul>
-                        </div>
                     </div>
                 </nav>
-
-                <input style={{
+                {/* <input style={{
                     fontSize: 24,
                     display: 'block',
                     width: "99%",
                     paddingTop: 8,
                     paddingBottom: 8,
                     paddingLeft: 16
-                }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" />
-
-                <div className="wrapper">
-                    <div className="row">
-                        {this.state.rows}
+                }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" /> */}
+                <div className="main-section" style={{backgroundColor: "#19181D"}}>
+                    <div className="wrapper-t">
+                        <div className="row">
+                            {this.state.rows}
+                        </div>
                     </div>
                 </div>
-
             </React.Fragment>
         );
     }

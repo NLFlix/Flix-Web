@@ -144,6 +144,22 @@
   padding: 0.9rem 0;
 }
 
+
+/* NAVBAR */
+.navbar-light {
+  padding: 50px !important;
+  background-color: #19181D !important;
+  color: white !important;
+}
+
+.wrapper-t {
+  height: 100%;
+  padding: 50px;
+  text-align: center;
+  display: table-cell;
+}
+
+
 /* TEXT INPUTS */
 .form-control {
   background-color: transparent !important;

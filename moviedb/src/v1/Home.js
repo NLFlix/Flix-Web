@@ -19,7 +19,8 @@ class Home extends Component {
         $.ajax({
             url: "/api/getMovieBackdrop",
             success: (result) => {
-                var backdrop = JSON.parse(result).backdrop_path
+                var backdrop = JSON.parse(result);
+                console.log(backdrop);
                 if(!backdrop){
                     console.log('No backdrop, retrying');
                     this.getBackDrop();
@@ -52,10 +53,9 @@ class Home extends Component {
     render() {
         console.log('Render');
         if(this.state.backdrop != undefined) {
-            console.log(this.state.backdrop);
             return (
                 <React.Fragment>
-                    <div className="main-section" style={{background:"linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(https://image.tmdb.org/t/p/original/"+ this.state.backdrop + ")"}}>>
+                    <div className="main-section" style={{background:"linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(https://image.tmdb.org/t/p/original/"+ this.state.backdrop.backdrop_path + ")"}}>
                         <div className="wrapper">
                             <div className="row">
                                 <div class="col-md-3"></div>
@@ -66,6 +66,12 @@ class Home extends Component {
                                             <button onClick = {this.searchHandler.bind(this)} className="btn btn-success" type="button"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-3"></div>
+
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <p>{this.state.backdrop.title}</p>
                                 </div>
                             </div>
                         </div>
