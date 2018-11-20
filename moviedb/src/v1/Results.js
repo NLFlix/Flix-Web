@@ -11,6 +11,10 @@ class Results extends Component {
             list: []
         }
         this.counter = 0;
+        this.performSearch = this.performSearch.bind(this);
+    }
+
+    componentDidMount(){
         this.performSearch(this.props.location.state.data)
     }
 
@@ -27,8 +31,8 @@ class Results extends Component {
                 console.log("Fetched data successfully")
                 var movies = JSON.parse(results);
                 var movieRows = []
-                this.state.list = movies;
-                for (var result of movies){
+                this.setState({list : movies});
+                for (var result of movies)  {
                     if(this.counter < 12) {
                         var movie = result;
                         movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
@@ -48,6 +52,10 @@ class Results extends Component {
             }
         })
 
+    }
+
+    getList(){
+        console.log(this.state.list);
     }
 
 
@@ -85,6 +93,8 @@ class Results extends Component {
                         </div>
                     </div>
                 </div>
+
+                <button onClick={this.getList()}>CLICK ME</button>
             </React.Fragment>
         );
     }
