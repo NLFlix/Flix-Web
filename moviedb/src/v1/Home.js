@@ -21,7 +21,7 @@ class Home extends Component {
             success: (result) => {
                 var backdrop = JSON.parse(result);
                 console.log(backdrop);
-                if(!backdrop){
+                if(backdrop.backdrop_path == null){
                     console.log('No backdrop, retrying');
                     this.getBackDrop();
                 } else {

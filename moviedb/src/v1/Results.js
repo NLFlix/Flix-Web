@@ -10,7 +10,7 @@ class Results extends Component {
         this.state = {
             list: []
         }
-
+        this.counter = 0;
         this.performSearch(this.props.location.state.data)
     }
 
@@ -25,16 +25,21 @@ class Results extends Component {
             },
             success: (results) => {
                 console.log("Fetched data successfully")
-
+                var movies = JSON.parse(results);
                 var movieRows = []
-
-                results.forEach((result) => {
-                    var movie = JSON.parse(result)
-                    movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-                    // console.log(movie.poster_path)
-                    const movieRow = <MovieRow key={movie.id} movie={movie} />
-                    movieRows.push(movieRow)
-                })
+                this.state.list = movies;
+                for (var result of movies){
+                    if(this.counter < 12) {
+                        var movie = result;
+                        movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+                        // console.log(movie.poster_path)
+                        const movieRow = <MovieRow key={movie.id} movie={movie} />
+                        movieRows.push(movieRow)
+                        this.counter++;
+                    } else {
+                        break;
+                    }
+                }
 
                 this.setState({ rows: movieRows })
             },
