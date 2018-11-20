@@ -38,20 +38,17 @@ app.get('/api/search', (req, res) => {
     }
 
     request(options, function (error, response, body) {
-        console.log(body);
-        var list = []
-        db.all(body, (err, rows) => {
-            if (err) {
-                console.error(err.message);
-            }
-            console.log('Retrieved All');
-            // rows.forEach((row) => {
-            //     console.log('Row');
-            //     movieInfo = JSON.stringify(row);
-            //     list.push(movieInfo);
-            // });
-            res.json(JSON.stringify(rows));
-        });
+        if(!body.hasOwnProperty('error')){
+            console.log(body);
+            var list = []
+            db.all(body, (err, rows) => {
+                if (err) {
+                    console.error(err.message);
+                }
+                console.log('Retrieved All');
+                res.json(JSON.stringify(rows));
+            });
+        }
     });
 
 });
