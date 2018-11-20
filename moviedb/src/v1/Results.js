@@ -1,3 +1,4 @@
+import Helmet from '../../node_modules/react-helmet';
 import React, { Component } from 'react';
 import MovieRow from './MovieRow.js';
 import $ from 'jquery';
@@ -54,23 +55,12 @@ class Results extends Component {
     render() {
         return (
             <React.Fragment>
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="#">NLIMDb</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <Helmet>
+                    <title>NLIMBd | {this.props.location.state.data}</title>
+                </Helmet>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                    <a class="navbar-brand" href="/">NLIMDb</a>
                 </nav>
                 {/* <input style={{
                     fontSize: 24,
@@ -80,9 +70,12 @@ class Results extends Component {
                     paddingBottom: 8,
                     paddingLeft: 16
                 }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" /> */}
-                <div className="main-section" style={{backgroundColor: "#19181D"}}>
+                <div className="main-section" style={{backgroundColor: "#19181D", paddingTop: "50px"}}>
                     <div className="wrapper-t">
                         <div className="row">
+                            <div class="col-md-12 text-left">
+                                <h1 style={{color:"white", fontSize:"20px", fontWeight:"900"}}>SEARCHING FOR : {this.props.location.state.data}</h1>
+                            </div>
                             {this.state.rows}
                         </div>
                     </div>

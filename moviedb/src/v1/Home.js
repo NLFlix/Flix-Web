@@ -55,6 +55,10 @@ class Home extends Component {
         if(this.state.backdrop != undefined) {
             return (
                 <React.Fragment>
+                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                        <a class="navbar-brand" href="/">NLIMDb</a>
+                    </nav>
+
                     <div className="main-section" style={{background:"linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(https://image.tmdb.org/t/p/original/"+ this.state.backdrop.backdrop_path + ")"}}>
                         <div className="wrapper">
                             <div className="row">

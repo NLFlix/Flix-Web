@@ -1,15 +1,14 @@
 import React from 'react'
-import $ from 'jquery'
 import { Link } from "react-router-dom";
 
 class MovieRow extends React.Component {
   render() {
     return (
-      <div class="col-md-3">
+      <div class="col-md-2">
         <Link to={'./movie/' + this.props.movie.id }>
-          <img style={{paddingTop: "15px"}} alt="Poster" width="180" src = {this.props.movie.poster_src}/>
-          <h5 style={{color:"white"}}>{this.props.movie.title}</h5>
-          <h5 style={{color:"white"}}>{this.props.movie.release_date}</h5>
+            <img style={{paddingTop: "15px"}} alt="Poster" width="180" src = {this.props.movie.poster_src}/>
+              <h5 style={{color:"white", fontSize:"14px", fontWeight:"900"}}>{this.props.movie.title}</h5>
+              <h5 style={{color:"white", fontSize:"14px", fontWeight:"900"}}>{this.props.movie.release_date}</h5>
         </Link>
       </div>
     )/*<table key={this.props.movie.id}>
