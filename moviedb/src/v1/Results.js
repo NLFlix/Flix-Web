@@ -30,10 +30,11 @@ class Results extends Component {
             success: (results) => {
                 console.log("Fetched data successfully")
                 var movies = JSON.parse(results);
+                console.log("LENGTH : " + Object.keys(movies).length)
                 var movieRows = []
                 this.setState({list : movies});
                 for (var result of movies)  {
-                    if(this.counter < 12) {
+                    if(this.counter < 24) {
                         var movie = result;
                         movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
                         // console.log(movie.poster_path)
@@ -93,8 +94,6 @@ class Results extends Component {
                         </div>
                     </div>
                 </div>
-
-                <button onClick={this.getList()}>CLICK ME</button>
             </React.Fragment>
         );
     }

@@ -1,5 +1,6 @@
 import Helmet from '../../node_modules/react-helmet';
 import React, { Component } from 'react';
+import MovieRow from './MovieRow.js';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
@@ -7,7 +8,8 @@ import $ from 'jquery';
 class Movie extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+        }
         $.ajax({
             url: "/api/" + this.props.match.params.id + "/movie",
             success: (result) => {
@@ -50,6 +52,10 @@ class Movie extends Component {
 
                                 <div className="col-md-9">
                                     <p className="movie-info-style select-movie-info-thin" style={{paddingRight: "10%"}}>{movie.overview}</p>
+                                </div>
+
+                                <div className="col-md-12">
+
                                 </div>
                             </div>
                         </div>
