@@ -74,11 +74,23 @@ app.get('/api/:movieID/movie', (req, res) => {
 
 
 // Grab a movies video
-app.get('/api/:movieID/videos', (req, res) => {
+app.get('/api/:movieID/video', (req, res) => {
     // List of parameters
     var params = req.params
 
-    db.get(`SELECT * FROM Videos v WHERE v.id IN (Select id FROM Movies m WHERE m.id = ?)`, [params.movieID], (err, rows) => {
+    db.get(`SELECT * FROM Videos v WHERE v.movie_id = ?`, [params.movieID], (err, rows) => {
+        if(err) {
+            console.error(err.message);
+        }
+
+        res.json(JSON.stringify(rows));
+    });
+});
+
+// Grab movie actors
+app.get('/api/:movieID/actors', (req, res) =>{
+    var params = req.params;
+    db.all(`SELECT p.name, p.profile_path, c.character FROM People p, Cast_in_movie c WHERE p.id = c.person_id AND c.movie_id = ? ORDER BY p.popularity DESC`, [params.movieID], (err, rows) => {
         if(err) {
             console.error(err.message);
         }

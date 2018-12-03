@@ -20,14 +20,33 @@ class Movie extends Component {
                 console.error("Failed to fetch data")
             }
         });
+
+        $.ajax({
+            url: "/api/" + this.props.match.params.id + "/actors",
+            success: (result) => {
+                this.setState({ actors: result })
+                console.log("Fetched data successfully")
+            },
+            error: (xhr, status, err) => {
+                console.error("Failed to fetch data")
+            }
+        });
+
+        $.ajax({
+            url: "/api/" + this.props.match.params.id + "/video",
+            success: (result) => {
+                this.setState({ video: result })
+                console.log("Fetched data successfully")
+            },
+            error: (xhr, status, err) => {
+                console.error("Failed to fetch data")
+            }
+        });
     }
 
-    componentDidMount() {
-       
-    }
+    
 
     render() {
-        console.log("render")
         if (this.state.movie != undefined) {
             var movie = JSON.parse(this.state.movie)
             return (
