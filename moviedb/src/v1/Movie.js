@@ -10,6 +10,7 @@ class Movie extends Component {
         super(props)
         this.state = {
         }
+        console.log(this.props.match.params.id)
         $.ajax({
             url: "/api/" + this.props.match.params.id + "/movie",
             success: (result) => {

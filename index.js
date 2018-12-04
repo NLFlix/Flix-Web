@@ -51,6 +51,7 @@ app.get('/api/search', (req, res) => {
                 }
 
                 console.log("Retrieved search.");
+
                 res.json(JSON.stringify(rows));
             });
         }
