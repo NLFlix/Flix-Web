@@ -112,12 +112,12 @@ class Movie extends Component {
             if(this.state.actors != undefined) {
                 var actors = JSON.parse(this.state.actors)
             }
+
             return (
                 <React.Fragment>
                     <Helmet>
-                        <title>NLIMBd | {movie.title}</title>
+                        <title>NLIMBd | {movie.title} </title>
                     </Helmet>
-                    
                     <div className="masthead text-left" style={{background:"linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(https://image.tmdb.org/t/p/original/"+ movie.backdrop_path + ")"}}>
                             <p className="movie-info-style select-movie-info-sml">{movie.release_date} &nbsp;&nbsp;&nbsp;&nbsp; {movie.vote_average} <i className="fas fa-star "></i></p>
                             <p className="movie-info-style select-movie-title">{movie.title}</p>
