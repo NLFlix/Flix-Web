@@ -17,7 +17,7 @@ let db = new sqlite3.Database('./db/NLIM.db', sqlite3.OPEN_READWRITE, (err) => {
 
 // Retrieve a movie backdrop for the home page
 app.get('/api/getMovieBackdrop', (req, res) => {
-    db.get(`SELECT backdrop_path FROM movies WHERE adult = 0 AND backdrop_path != \'None\' AND popularity > 9.5 ORDER BY RANDOM() LIMIT 1`, (err, rows) => {
+    db.get(`SELECT backdrop_path FROM movies WHERE adult = 0 AND backdrop_path != \'None\' AND popularity > 9.7 ORDER BY RANDOM() LIMIT 1`, (err, rows) => {
         if(err) {
             console.error(err.message);
         }
