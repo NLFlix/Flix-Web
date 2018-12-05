@@ -25,37 +25,6 @@ class Movie extends Component {
             }
         });
         
-        // $.ajax({
-        //     url: urlString,
-        //     data: {
-        //         search: searchTerm
-        //     },
-        //     success: (results) => {
-        //         console.log("Fetched data successfully")
-        //         var movies = JSON.parse(results);
-        //         console.log("LENGTH : " + Object.keys(movies).length)
-        //         var movieRows = []
-        //         this.setState({list : movies});
-        //         for (var result of movies)  {
-        //             if(this.counter < 24) {
-        //                 var movie = result;
-        //                 movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-        //                 // console.log(movie.poster_path)
-        //                 const movieRow = <MovieRow key={movie.id} movie={movie} />
-        //                 movieRows.push(movieRow)
-        //                 this.counter++;
-        //             } else {
-        //                 break;
-        //             }
-        //         }
-
-        //         this.setState({ rows: movieRows })
-        //     },
-        //     error: (xhr, status, err) => {
-        //         console.error("Failed to fetch data")
-        //     }
-        // })
-        
         $.ajax({
             url: "/api/" + this.props.match.params.id + "/actors",
             success: (result) => {
@@ -100,17 +69,11 @@ class Movie extends Component {
     
 
     render() {
-        if (this.state.video != undefined) {
-            var video = JSON.parse(this.state.video)
-        }
         if (this.state.movie != undefined) {
             var movie = JSON.parse(this.state.movie)
+
             if(this.state.video != undefined) {
                 var video = JSON.parse(this.state.video)
-            }
-
-            if(this.state.actors != undefined) {
-                var actors = JSON.parse(this.state.actors)
             }
 
             return (
@@ -123,6 +86,8 @@ class Movie extends Component {
                             <p className="movie-info-style select-movie-title">{movie.title}</p>
                             <p className="movie-info-style select-movie-info">{movie.runtime}min</p>
                             <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal">Watch Trailer</button>
+                            <iframe width="420" height="315" src={"https://www.youtube.com/watch?v=" + JSON.parse(this.state.video).key} />
+                            {console.log("BOOP:" + JSON.parse(this.state.video).key)}
                     </div>
 
                     <div className="sub-section">
@@ -138,13 +103,6 @@ class Movie extends Component {
 
                                 {this.state.actorList}
                                 
-                                {/* <div className="col-md-3">
-                                    {this.state.actorList}
-                                    {/* https://api.themoviedb.org/3/movie/45/videos?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US */}
-                                    {/* <video width="320" height="240" controls>
-                                        <source src={"https://api.themoviedb.org/3/movie/" + video.movie_id + "/videos?api_key=43d55e451cc1d6c86fb932bf30f3ad09&language=en-US"} type="video/mp4" />
-                                    </video> */}
-                                {/* </div> */}
                             </div>
                         </div>
                     </div>
