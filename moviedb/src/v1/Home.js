@@ -36,13 +36,15 @@ class Home extends Component {
     }
 
     performSearch(searchTerm) {
-        console.log(searchTerm)
-        this.props.history.push({
-            pathname: '/results',
-            state:{
-                data: searchTerm
-            }
-        })
+        if(searchTerm != ""){
+            console.log(searchTerm)
+            this.props.history.push({
+                pathname: '/results',
+                state:{
+                    data: searchTerm
+                }
+            })
+        }
     }
 
     searchHandler(){

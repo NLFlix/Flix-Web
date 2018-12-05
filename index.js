@@ -42,18 +42,23 @@ app.get('/api/search', (req, res) => {
 
     // Set up the request to the DB
     request(options, function (error, response, body) {
-        if(!body.hasOwnProperty('error')) {
-            var list = [];
+        console.log(body);
+        if(body != undefined){
+            if(!body.hasOwnProperty('error')) {
+                var list = [];
 
-            db.all(body, (err, rows) => {
-                if(err) {
-                    console.error(err.message);
-                }
+                db.all(body, (err, rows) => {
+                    if(err) {
+                        console.error(err.message);
+                    }
 
-                console.log("Retrieved search.");
+                    console.log("Retrieved search.");
 
-                res.json(JSON.stringify(rows));
-            });
+                    res.json(JSON.stringify(rows));
+                });
+            }
+        } else {
+            res.json("")
         }
     });
 });

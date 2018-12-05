@@ -8,7 +8,6 @@ class Results extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: []
         }
         this.counter = 0;
         this.performSearch = this.performSearch.bind(this);
@@ -28,21 +27,21 @@ class Results extends Component {
                 search: searchTerm
             },
             success: (results) => {
-                console.log("Fetched data successfully")
-                var movies = JSON.parse(results);
-                console.log("LENGTH : " + Object.keys(movies).length)
                 var movieRows = []
-                this.setState({list : movies});
-                for (var result of movies)  {
-                    if(this.counter < 24) {
-                        var movie = result;
-                        movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
-                        // console.log(movie.poster_path)
-                        const movieRow = <MovieRow key={movie.id} movie={movie} />
-                        movieRows.push(movieRow)
-                        this.counter++;
-                    } else {
-                        break;
+                if(results != ""){
+                    console.log("Fetched data successfully")
+                    var movies = JSON.parse(results);
+                    for (var result of movies)  {
+                        if(this.counter < 24) {
+                            var movie = result;
+                            movie.poster_src = "https://image.tmdb.org/t/p/w185" + movie.poster_path
+                            // console.log(movie.poster_path)
+                            const movieRow = <MovieRow key={movie.id} movie={movie} />
+                            movieRows.push(movieRow)
+                            this.counter++;
+                        } else {
+                            break;
+                        }
                     }
                 }
 
@@ -55,9 +54,6 @@ class Results extends Component {
 
     }
 
-    getList(){
-        console.log(this.state.list);
-    }
 
 
     searchChangeHandler(event) {
@@ -67,35 +63,67 @@ class Results extends Component {
         boundObject.performSearch(searchTerm)
     }
     render() {
-        return (
-            <React.Fragment>
-                <Helmet>
-                    <title>NLIMBd | {this.props.location.state.data}</title>
-                </Helmet>
-
-                <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-                    <a class="navbar-brand" href="/">NLIMDb</a>
-                </nav>
-                {/* <input style={{
-                    fontSize: 24,
-                    display: 'block',
-                    width: "99%",
-                    paddingTop: 8,
-                    paddingBottom: 8,
-                    paddingLeft: 16
-                }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" /> */}
-                <div className="main-section" style={{backgroundColor: "#19181D", paddingTop: "50px"}}>
-                    <div className="wrapper-t">
-                        <div className="row">
-                            <div class="col-md-12 text-left">
-                                <h1 style={{color:"white", fontSize:"20px", fontWeight:"900"}}>SEARCHING FOR : {this.props.location.state.data}</h1>
+        if(this.state.rows && this.state.rows.length == 0){
+            return (
+                <React.Fragment>
+                    <Helmet>
+                        <title>NLIMBd | {this.props.location.state.data}</title>
+                    </Helmet>
+    
+                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                        <a class="navbar-brand" href="/">NLIMDb</a>
+                    </nav>
+                    {/* <input style={{
+                        fontSize: 24,
+                        display: 'block',
+                        width: "99%",
+                        paddingTop: 8,
+                        paddingBottom: 8,
+                        paddingLeft: 16
+                    }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" /> */}
+                    <div className="main-section" style={{backgroundColor: "#19181D", paddingTop: "50px"}}>
+                        <div className="wrapper-t">
+                            <div className="row">
+                                <div class="col-md-12 text-left">
+                                    <h1 style={{color:"white", fontSize:"20px", fontWeight:"900"}}>SEARCHING FOR : {this.props.location.state.data}</h1>
+                                    <h5 style={{color:"white", fontSize:"14px", fontWeight:"900"}}>No Movies Found</h5>
+                                </div>
                             </div>
-                            {this.state.rows}
                         </div>
                     </div>
-                </div>
-            </React.Fragment>
-        );
+                </React.Fragment>
+            );
+        } else {
+            return (
+                <React.Fragment>
+                    <Helmet>
+                        <title>NLIMBd | {this.props.location.state.data}</title>
+                    </Helmet>
+
+                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                        <a class="navbar-brand" href="/">NLIMDb</a>
+                    </nav>
+                    {/* <input style={{
+                        fontSize: 24,
+                        display: 'block',
+                        width: "99%",
+                        paddingTop: 8,
+                        paddingBottom: 8,
+                        paddingLeft: 16
+                    }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" /> */}
+                    <div className="main-section" style={{backgroundColor: "#19181D", paddingTop: "50px"}}>
+                        <div className="wrapper-t">
+                            <div className="row">
+                                <div class="col-md-12 text-left">
+                                    <h1 style={{color:"white", fontSize:"20px", fontWeight:"900"}}>SEARCHING FOR : {this.props.location.state.data}</h1>
+                                </div>
+                                {this.state.rows}
+                            </div>
+                        </div>
+                    </div>
+                </React.Fragment>
+            );
+        }
     }
 }
 export default Results    
