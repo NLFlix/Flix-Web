@@ -110,12 +110,10 @@ class Movie extends Component {
                             <title>NLIMBd | {movie.title} </title>
                         </Helmet>
                         <div className="masthead text-left" style={{background:"linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(https://image.tmdb.org/t/p/original/"+ movie.backdrop_path + ")"}}>
-                                <p className="movie-info-style select-movie-info-sml">{movie.release_date} &nbsp;&nbsp;&nbsp;&nbsp; {movie.vote_average} <i className="fas fa-star "></i></p>
-                                <p className="movie-info-style select-movie-title">{movie.title}</p>
-                                <p className="movie-info-style select-movie-info">{movie.runtime}min</p>
-                                <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal">Watch Trailer</button>
-                                <iframe width="420" height="315" src={"https://www.youtube.com/embed/" + video.key} />
-                                {console.log("BOOP:" + video.key)}
+                            <p className="movie-info-style select-movie-info-sml">{movie.release_date} &nbsp;&nbsp;&nbsp;&nbsp; {movie.vote_average} <i className="fas fa-star "></i></p>
+                            <p className="movie-info-style select-movie-title">{movie.title}</p>
+                            <p className="movie-info-style select-movie-info">{movie.runtime}min</p>
+                            <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal"><font class="movie-info-style">TRAILER</font> &nbsp;&nbsp;&nbsp;<i class="fas fa-play"></i></button>
                         </div>
 
                         <div className="sub-section">
@@ -129,6 +127,14 @@ class Movie extends Component {
                                         <p className="movie-info-style select-movie-info-thin" style={{paddingRight: "10%"}}>{movie.overview}</p>
                                     </div>
 
+                                    <div className="col-md-12">
+                                        <br/><br/>
+                                    </div>
+
+                                    <div className="col-md-12 text-left">
+                                        <p className="movie-info-style select-movie-info">MAIN ACTORS</p>
+                                    </div>
+
                                     {this.state.actorList}
                                     
                                 </div>
@@ -139,20 +145,8 @@ class Movie extends Component {
                             <div className="modal-dialog">
                                 <div className="modal-content">
 
-
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Modal Heading</h4>
-                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-
                                 <div className="modal-body">
-                                    Modal body..
-                                </div>
-
-
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <iframe width="480" height="320" src={"https://www.youtube.com/embed/" + video.key} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
 
                                 </div>
