@@ -71,7 +71,6 @@ class Movie extends Component {
     render() {
         if (this.state.movie != undefined) {
             var movie = JSON.parse(this.state.movie)
-
             if(this.state.video == undefined){
                 return (
                     <React.Fragment>
@@ -97,6 +96,28 @@ class Movie extends Component {
 
                                     {this.state.actorList}
                                     
+                                </div>
+
+                                <div className="col-md-3 text-center">
+                                    <div className="card" style={{width: "18rem;"}}>
+                                        <img className="card-img-top" src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg" alt="Card image cap"/>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Ryan Reynolds</h5>
+                                            <p className="card-text">Deadpool</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg"></img>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg"></img>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face/vYxl6lGbVPr7f8QlaSdeRLUs5PB.jpg"></img>
                                 </div>
                             </div>
                         </div>
@@ -137,18 +158,6 @@ class Movie extends Component {
 
                                     {this.state.actorList}
                                     
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="modal" id="myModal">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-
-                                <div className="modal-body">
-                                    <iframe width="480" height="320" src={"https://www.youtube.com/embed/" + video.key} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-
                                 </div>
                             </div>
                         </div>

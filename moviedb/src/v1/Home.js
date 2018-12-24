@@ -1,3 +1,4 @@
+import Helmet from '../../node_modules/react-helmet';
 import React, { Component } from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -85,6 +86,45 @@ class Home extends Component {
                 </React.Fragment>
             );
         } else { return <p></p> }
+                
+        return (
+            <React.Fragment>
+                <Helmet>
+                    <title>NLIMDb</title>
+                </Helmet>
+                <div>
+                    <table className="titleBar">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img alt="app icon" width="50" src="green_app_icon.svg" />
+                                </td>
+                                <td width="8" />
+                                <td>
+                                    <h1>MoviesDB Search</h1>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <input style={{
+                        fontSize: 24,
+                        display: 'block',
+                        width: "99%",
+                        paddingTop: 8,
+                        paddingBottom: 8,
+                        paddingLeft: 16
+                    }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" />
+
+                    <div className="wrapper">
+                        <div className="row">
+                            {this.state.rows}
+                        </div>
+                    </div>
+                    {/* {this.state.rows} */}
+                </div>
+            </React.Fragment>
+        );
     }
 }
 export default withRouter(Home)    
